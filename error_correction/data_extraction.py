@@ -2,14 +2,8 @@ import pandas as pd
 import numpy as np
 
 def process_patient_data(file_name):
-    """
-    Loads patient data from an XLSX file, processes it, and saves the corrected data to a new CSV file.
-
-    Args:
-        file_name (str): The name of the input XLSX file.
-    """
     try:
-        # Load the dataset from an XLSX file
+
         df = pd.read_csv(file_name)
     except FileNotFoundError:
         print(f"Error: The file '{file_name}' was not found.")
@@ -19,7 +13,6 @@ def process_patient_data(file_name):
         print(f"An error occurred: {e}")
         return
 
-    # --- IMPORTANT: Update this dictionary with the exact column names from your XLSX file ---
     column_mapping = {
         'age': 'Age',
         'gender': 'Gender',
@@ -36,7 +29,7 @@ def process_patient_data(file_name):
         print("\nPlease update the `column_mapping` dictionary with the correct names.")
         return
 
-    # --- Step 1: Process IOP values ---
+
     df['IOP'] = np.nan
     
     both_present = df[column_mapping['iop_pneumatic']].notna() & df[column_mapping['iop_perkins']].notna()
@@ -76,8 +69,6 @@ def process_patient_data(file_name):
     print("\nHere's a preview of the processed data:")
     print(processed_df.head())
 
-
-# Run the function with your file name
-# Note: Ensure you provide the name of the .xlsx file here
 file_to_process = "full_patient_dataset.csv"
+
 process_patient_data(file_to_process)
