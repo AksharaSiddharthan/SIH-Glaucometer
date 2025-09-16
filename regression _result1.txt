@@ -1,0 +1,6 @@
+Regression Model Results:
+--------------------------
+Intercept (β₀): -6.9096
+Beta factor for Age (β₁): 0.0002
+Beta factor for Gender (β₂): 0.0000
+Beta factor for Cornea Thickness (β₃): 0.0431
